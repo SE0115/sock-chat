@@ -3,9 +3,11 @@ const app = express();
 const http  = require('http');
 const server = http.createServer(app);
 
-app.get('/', (req, res) => {
-    res.send('Express work!');
-});
+const indexRouter = require('./routes/index');
+const clubsRouter = require('./routes/clubs');
+
+app.use('/', indexRouter);
+app.use('/clubs', clubsRouter);
 
 server.listen(3000, () => {
     console.log('Express Sever is now listening on localhost:3000..');
